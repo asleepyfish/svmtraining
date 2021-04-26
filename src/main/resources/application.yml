@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: SVMTrainingApplication
+
+logging:
+  config: classpath:log4j2.xml
+
+
+
+
+
+

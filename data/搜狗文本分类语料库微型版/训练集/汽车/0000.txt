@@ -1,0 +1,439 @@
+车
+汽车
+小车 light vehicle
+
+大车 heavy vehicle
+
+道路车辆 road vehicle
+
+商用车辆 commercial vehicle
+
+机动车辆 motor vehicle
+
+电动车辆 electric vehicle
+
+摩托车 motorcycle
+
+轻便摩托车 moped
+
+轿车 passenger car
+
+微型轿车 minicar
+
+普通级轿车 subcompact car
+
+中级轿车 compact car
+
+中高级轿车 intermediate car
+
+高级轿车 limousine (pullman saloon)
+
+活顶轿车 convertible saloon
+
+旅行轿车 station wagon
+
+短头轿车 forward control passenger car
+
+小型轿车 coupe
+
+敞蓬小轿车 drop head coupe
+
+跑车 sports car
+
+赛车 racer (racing car)单座小客车 one-seater
+
+七座小客车 seven-seater
+
+越野车 off-road vehicle
+
+轻型越野车 light-off-road vehicle
+
+中型越野车 medium off-road vehicle
+
+重型越野车 heavy off -road vehicle
+
+超重型越野车 extra heavy off- road vehicle
+
+吉普车 jeep
+
+硬顶吉普车 hard top jeep
+
+客车 bus
+
+微型客车 minibus
+
+轻型客车 light bus
+
+中型客车 medium bus
+
+大型客车 large bus
+
+客货两用小客车 estate car (estate)
+
+多用途客车 multipurpose vehicle
+
+厢式小客车 closed car
+
+出租小客车 taxicar
+
+城市客车 urban bus
+
+大客车 coach
+
+城间大客车 intercity bus
+
+长途大客车 long distance coach
+
+旅游客车 sightseeing bus(touring bus)
+
+铰接客车 articulated bus
+
+无轨客车 trolley bus
+
+双层客车 double-deck bus
+
+团体客车 private coach货车 truck(lorry)
+
+微型货车 mini-truck
+
+轻型货车 light truck
+
+中型货车 medium truck
+
+重型货车 heavy truck
+
+公路货车 highway vehicle
+
+小型货车 pick-up
+
+平板货车 platform truck(flat bed truck)
+
+通用货车 general -purpose vehicle
+
+短轴距货车 short-wheel base truck
+
+长轴距货车 long-wheelbase truck
+
+集装箱运输货车 container carrier
+
+客货两用车 cargo-bus
+
+厢式货车 van
+
+牵引汽车 towing vehicle
+
+全挂牵引汽车 towing vehicle
+
+牵杆式牵引车 full-trailer towing vehicle
+
+半挂牵引车 semi-trailer towing vehicle道路列车 road train
+
+客用道路列车 passenger road train
+
+铰接式道路列车 articulated road train
+
+双挂式道路列车 double road train
+
+混合式道路列车 composite road train
+
+天然气车辆 natural gas vehicle(NGV)
+
+压缩天然气车辆 compressed natural gas vehicle
+
+液化天然气车辆 liquid petroleum gas vehicle
+
+液化石油气车辆 liquid petroleum gas vehicle
+
+双燃料车辆 duel fuel vehicle
+
+单燃料车辆 single fuel vehicle
+
+专用车 special vehicle
+
+垃圾车 dust car (refuse collector)
+
+冷藏车 refrigerated van
+
+洒水车 street sprinkler (street flusher)
+
+囚车 prison van
+
+殡仪车 hearse
+
+售货车 mobile store(mobile shop)
+
+图书馆车 mobile library
+
+宣传车 mobile louderspeaker
+
+商业广告车 spiel truck
+
+展览汽车 demonstration car
+
+博览会专用车 fairground vehicle
+
+流动艺术展览车 artmobile
+
+邮政车 mobile post office
+
+运油车 fuel tanker
+
+加油车 refueller
+
+飞机牵引车 aircraft tractor
+
+救护车 ambulance (medical vehicle)
+
+病院汽车 clinic car
+
+医疗急救车 rescue ambulance
+
+X射线诊断车 mobile-x-ray clinic
+
+防疫监测车 mobile epidemic control vehicle
+
+计划生育车 mobile family -planning clinic
+
+伤残者运送车 handicapped person carrier
+
+炊事车 kitchen vehicle
+
+餐车 mobile canteen
+
+沐浴车 mobile shower bath
+
+保温车 insulated van
+
+电视转播车 TV relaying vehicle
+
+电视录像车 video recording vehicle
+
+摄影车 mobile photographic studio
+
+电影放映车 film projection vehicle
+
+邮件运输车 mail carrier
+
+农用车 farm vehicle
+
+种子检测车 plant seeds inspection van
+
+植物保护车 plant pest control vehicle
+
+计量检测车 metrology inspection vehicle
+
+环境检测车 mobile environment monitor
+
+畜禽防疫车 mobile animal eqidemic control
+
+交通监理车 traffic control car
+
+刑事勘察车 mobile crime investigation vehicle
+
+气卸散装水泥车 bulk-cement pneumatic delivery tanker
+
+气卸散装煤粉车 bulk-coal powder pneumatic delivery tanker
+
+气卸散装电石粉车 bulk-calcium carbide pneumatic delivery tanker
+
+气卸散装化学粉粒车 bulk-chemicals pneumatic delivery tanker
+
+食用植物油运油汽车 edible oil tanker
+
+食用植物油加油车 edible oil pump delivery tanker
+
+活鱼运输车 life fish carrier
+
+气卸散装面粉车 bulk-flour pneumatic delivery tanker
+
+吸尘车 vacuum sweeper
+
+高压清洗车 high-pressure sewer flushing vehicle
+
+吸污车 suction -type sewer scavenger
+
+真空吸粪车 suction -type tumbrel tanker
+
+自装卸垃圾车 refuse collecting truck
+
+旋转板自装卸垃圾车 compression refuse collector
+
+航空食品装运车 aircraft caterer”s delivery truck
+
+散装粮食运输车 bulk-grain carrier
+
+散装饲料运输车 bulk-fodder transport truck
+
+牲畜运输车 livestock carrier
+
+家禽运输车 poultry carrier
+
+养蜂车 mobile bee-keeper
+
+原木运输车 logging transporter
+
+管材运输车 pole transporter
+
+车辆运输车 car transporter
+
+锅炉车 mobile boiler
+
+除雪车 snow sweeper
+
+机场客梯车 mobile aircraft landing stairs
+
+消防车 fire-fighting vehicle
+
+水罐消防车 fire-extinguishing water tanker
+
+泡沫消防车 fire-extinguishing foam tanker
+
+救火泵车 fire pumper
+
+消防水罐车 fire tanker
+
+泡沫灭火车 foam vehicle
+
+消防指挥车 fire service commanding car
+
+云梯消防车 fire-fighting truntable ladder
+
+厢式汽车 van
+
+厢式零担运输车 break bulk cargo carrier
+
+罐式汽车 tanker
+
+酸罐车 acid tanker
+
+液化气罐车 liquified gas tanker
+
+奶罐车 milk tanker
+
+食品液罐车 beverage tanker
+
+背罐车 demountable tanker carrier
+
+装卸机械 loading (unload)machine
+
+叉式装货机 fork-type loading (unlaod)machine
+
+刮板式装货机 scraper type loading machine
+
+单斗式装货机 single bucket loading machine
+
+带升降塔架车辆 tower crane
+
+塔式超重机 tower crane
+
+汽车吊车 truck crane
+
+移动式起重机 mobile crane
+
+固定式起重机 stationary crane
+
+起重举升汽车 crane/lift truck
+
+特种结构汽车 special construction vehicle
+
+随车起重运输车 truck with loading crane
+
+后栏板起重运输车 tail-lift truck
+
+高空作业车 hydraulic aerial cage
+
+（公路事故或故障车辆的）急修车 breakdown truck
+
+修理车 mobile workshop
+
+救险车 recovery vehicle
+
+技术服务车 service car
+
+现场用小车 spot dolly
+
+工具车 tool car
+
+故障检修车 trouble car
+
+勘测工程车 recording bus
+
+筑路工程用车 road machine
+
+压路机 road roller
+
+推土机 ball dozer
+
+平路机 motor grader
+
+铲运机 wheeled loading shovel
+
+轮式装载车 wheeled loader
+
+轮式挖掘机 wheeled excavator
+
+混凝土搅拌车 concrete mixer truck
+
+焊接工程车 mobile welding workshop
+
+沥青洒布车 asphalt distribution truck
+
+沥青路面养护车 asphalt pavement maintenance truck
+
+沥青运输车 heated bitument tanker
+
+建筑大板运输车 prfab building panel transporter
+
+电信工程车 telecommunicatin field service truck
+
+工程机械运输车 construction machinery transporter
+
+仓栅式汽车 storage/stake truck
+
+钻孔立柱车 pole drill and erection truck
+
+油田试井车 oil-well testing vehicle
+
+井架运输车 derrick transporter
+
+修井车 well maintenance vehicle
+
+地锚车 mobile ground anchor vehicle
+
+灌注车 oil well cracking acid pumping truck
+
+照明车 flood lighting vehicle
+
+后翻倾式自卸汽车 rear dump truck
+
+两侧翻倾式自卸汽车 side dump truck
+
+三面翻倾式自卸汽车 three-way dump truck
+
+重型自卸汽车 heavy duty dump truck
+
+矿用自卸汽车 mining dump truck
+
+专用自卸汽车 special dump truck
+
+摆臂式自装卸汽车 swept-body dump truck
+
+车厢可卸式汽车 roll-off skip loader
+
+全挂车 full trailer
+
+半挂车 semi-trailer
+
+特种挂车 special trailer
+
+栏板货厢式挂车 cargo trailer
+
+平板式挂车 flat platform trailer
+
+低架式挂车 low-loader trailer
+
+厢式挂车 trailer van
+
+自卸式挂车 dumper trailer
+
+旅居挂车 caravan
