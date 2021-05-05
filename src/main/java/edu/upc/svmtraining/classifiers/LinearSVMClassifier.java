@@ -39,7 +39,7 @@ public class LinearSVMClassifier extends AbstractClassifier {
 
         //分词，创建文档
         Document document = new Document(model.wordIdTrie, model.tokenizer.segment(text));
-
+        //返回的是一个map集合，存储的是类型和对应权值
         return predict(document);
     }
 
@@ -47,7 +47,9 @@ public class LinearSVMClassifier extends AbstractClassifier {
     public double[] categorize(Document document) throws IllegalArgumentException, IllegalStateException {
         FeatureNode[] x = buildDocumentVector(document, model.featureWeighter);
         double[] probs = new double[model.svmModel.getNrClass()];
+        //进行SVM预测，确认每个分类的可能性程度
         Linear.predictProbability(model.svmModel, x, probs);
+        //probs为对应类别概率的列表集合
         return probs;
     }
 

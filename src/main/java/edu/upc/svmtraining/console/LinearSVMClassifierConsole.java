@@ -12,12 +12,12 @@ import java.util.*;
 import static com.hankcs.hanlp.utility.Predefine.logger;
 
 public class LinearSVMClassifierConsole {
-    public static final String CORPUS_FOLDER = "data/搜狗文本分类语料库微型版/训练集";
-    public static final String TEST_SET = "data/搜狗文本分类语料库微型版/测试集";
-    public static int hit_num = 0;
-    public static int test_num = 0;
-    public static int sport_test_num = 0, healthy_test_num = 0, military_test_num = 0, education_test_num = 0, travel_test_num = 0, car_test_num = 0, economics_test_num = 0;
-    public static int sport_hit_num = 0, healthy_hit_num = 0, military_hit_num = 0, education_hit_num = 0, travel_hit_num = 0, car_hit_num = 0, economics_hit_num = 0;
+    private static final String CORPUS_FOLDER = "data/搜狗文本分类语料库微型版/训练集";
+    private static final String TEST_SET = "data/搜狗文本分类语料库微型版/测试集";
+    private static int hit_num = 0;
+    private static int test_num = 0;
+    private static int sport_test_num = 0, healthy_test_num = 0, military_test_num = 0, education_test_num = 0, travel_test_num = 0, car_test_num = 0, economics_test_num = 0;
+    private static int sport_hit_num = 0, healthy_hit_num = 0, military_hit_num = 0, education_hit_num = 0, travel_hit_num = 0, car_hit_num = 0, economics_hit_num = 0;
     /**
      * 模型保存路径
      */

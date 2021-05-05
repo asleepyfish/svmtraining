@@ -17,12 +17,9 @@ public class LinearSVMClassifierTest extends TestCase {
     public static final String MODEL_PATH = "data/svm-classification-model.ser";
 
     public static void main(String[] args) throws IOException {
-        long l1 = System.currentTimeMillis();
         IClassifier classifier = new LinearSVMClassifier(trainOrLoadModel());
         String predict = predict(classifier, "电子货币");
         System.out.println(predict);
-        long l2 = System.currentTimeMillis();
-        System.out.println("分类耗时" + (l2 - l1) + "毫秒");
     }
 
     private static String predict(IClassifier classifier, String text) {
