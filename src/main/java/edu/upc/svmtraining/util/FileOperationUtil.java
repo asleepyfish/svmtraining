@@ -1,7 +1,10 @@
 package edu.upc.svmtraining.util;
 
 import java.io.*;
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class FileOperationUtil {
     //用来存遍历文件夹之后得到的文件路径和文件分类名
@@ -78,18 +81,6 @@ public class FileOperationUtil {
             return null;
         }
         return map;*/
-    }
-
-    public static void getFiles(String path) {
-        File file = new File(path);
-        File[] files = file.listFiles();
-        for (File file1 : files) {
-            if (file1.isDirectory()) {
-                getFiles(file1.getAbsolutePath());
-            } else {
-                System.out.println(file1.getAbsolutePath());
-            }
-        }
     }
 
     public static void main(String[] args) {
