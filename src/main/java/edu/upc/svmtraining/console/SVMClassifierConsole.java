@@ -12,15 +12,17 @@ import java.util.Map;
 import static com.hankcs.hanlp.utility.Predefine.logger;
 
 public class SVMClassifierConsole {
+    //训练集路径
     private static final String CORPUS_FOLDER = "data/搜狗文本分类语料库微型版/训练集";
+    //测试集路径
     private static final String TEST_SET = "data/搜狗文本分类语料库微型版/测试集";
+    //命中分类数
     private static int hit_num = 0;
+    //测试分类数
     private static int test_num = 0;
     private static int sport_test_num = 0, healthy_test_num = 0, military_test_num = 0, education_test_num = 0, travel_test_num = 0, car_test_num = 0, economics_test_num = 0;
     private static int sport_hit_num = 0, healthy_hit_num = 0, military_hit_num = 0, education_hit_num = 0, travel_hit_num = 0, car_hit_num = 0, economics_hit_num = 0;
-    /**
-     * 模型保存路径
-     */
+    //模型保存路径
     public static final String MODEL_PATH = "data/svm-classification-model.ser";
 
     public static void main(String[] args) throws IOException {
@@ -62,51 +64,48 @@ public class SVMClassifierConsole {
     /**
      * 根据测试集数据测试分类是否准确
      *
-     * @param path
-     * @param category
-     * @param classifier
-     * @return
-     * @throws IOException
+     * @param path       路径
+     * @param category   分类名
+     * @param classifier 分类器对象
+     * @return 返回是否分类正确
+     * @throws IOException Exception
      */
     private static boolean accuracyOfTest(String path, String category, SVMClassifier classifier) throws IOException {
         String readFile = FileOperationUtil.readFile(path);
-        if (predict(classifier, readFile).equals(category)) {
-            return true;
-        }
-        return false;
+        return predict(classifier, readFile).equals(category);
     }
 
     /**
      * 预测分类
      *
-     * @param classifier
-     * @param text
-     * @return
+     * @param classifier 分类器对象
+     * @param text       分类文本
+     * @return 分类结果
      */
     private static String predict(SVMClassifier classifier, String text) {
+        /*
+          LinearSVMClassifier是最顶层的接口
+          调用AbstractClassifier的classify方法（多态）,将文本作为参数预测去对比分类,
+          对于不同分类结果和预期特征值用Map<String,Double>来存
+          最终返回的是经过特征向量比对后此map中得分最高的分类
+         */
         return classifier.classify(text);
     }
 
     /**
      * 训练模型
      *
-     * @return
-     * @throws IOException
+     * @return 分类模型
+     * @throws IOException Exception
      */
     private static SVMModel trainOrLoadModel() throws IOException {
         SVMModel model = (SVMModel) readObjectFrom(MODEL_PATH);
         if (model != null) {
             return model;
         }
-
-        File corpusFolder = new File(CORPUS_FOLDER);
-        if (!corpusFolder.exists() || !corpusFolder.isDirectory()) {
-            System.err.println("没有文本分类语料");
-            System.exit(1);
-        }
         // 创建分类器
         SVMClassifier classifier = new SVMClassifier();
-        // 训练后的模型支持持久化
+        // 训练后的模型支持持久化,文件编码类型UTF-8
         classifier.train(CORPUS_FOLDER, "UTF-8");
         model = (SVMModel) classifier.getModel();
         saveObjectTo(model, MODEL_PATH);
@@ -116,31 +115,28 @@ public class SVMClassifierConsole {
     /**
      * 序列化对象
      *
-     * @param o
-     * @param path
-     * @return
+     * @param o    存储对象
+     * @param path 存储路径
      */
-    public static boolean saveObjectTo(Object o, String path) {
+    public static void saveObjectTo(Object o, String path) {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
             oos.writeObject(o);
             oos.close();
         } catch (IOException e) {
             logger.warning("在保存对象" + o + "到" + path + "时发生异常" + e);
-            return false;
         }
 
-        return true;
     }
 
     /**
      * 反序列化对象
      *
-     * @param path
-     * @return
+     * @param path 读取路径
+     * @return 读取模型
      */
     public static Object readObjectFrom(String path) {
-        ObjectInputStream ois = null;
+        ObjectInputStream ois;
         try {
             ois = new ObjectInputStream(new FileInputStream(path));
             Object o = ois.readObject();
@@ -156,10 +152,10 @@ public class SVMClassifierConsole {
     /**
      * 封装分类数量统计的方法
      *
-     * @param path
-     * @param category
-     * @param classifier
-     * @throws IOException
+     * @param path       路径
+     * @param category   分类名
+     * @param classifier 分类器对象
+     * @throws IOException Exception
      */
     public static void getCategoryNum(String path, String category, SVMClassifier classifier) throws IOException {
         switch (category) {
@@ -227,9 +223,9 @@ public class SVMClassifierConsole {
     /**
      * 封装打印输出的方法
      *
-     * @param category
-     * @param hit_num
-     * @param test_num
+     * @param category 分类名
+     * @param hit_num  命中数
+     * @param test_num 测试数
      */
     public static void printTestAccuracy(String category, int hit_num, int test_num) {
         System.out.println(category + "类测试集共" + test_num + "个");

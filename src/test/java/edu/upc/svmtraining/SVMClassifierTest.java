@@ -46,28 +46,25 @@ public class SVMClassifierTest extends TestCase {
     /**
      * 序列化对象
      *
-     * @param o
-     * @param path
-     * @return
+     * @param o    存储对象
+     * @param path 存储路径
      */
-    public static boolean saveObjectTo(Object o, String path) {
+    public static void saveObjectTo(Object o, String path) {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
             oos.writeObject(o);
             oos.close();
         } catch (IOException e) {
             logger.warning("在保存对象" + o + "到" + path + "时发生异常" + e);
-            return false;
         }
 
-        return true;
     }
 
     /**
      * 反序列化对象
      *
-     * @param path
-     * @return
+     * @param path 读取路径
+     * @return 读取模型
      */
     public static Object readObjectFrom(String path) {
         ObjectInputStream ois = null;
