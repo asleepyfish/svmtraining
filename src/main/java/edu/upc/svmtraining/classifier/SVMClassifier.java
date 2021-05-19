@@ -3,14 +3,18 @@ package edu.upc.svmtraining.classifier;
 import com.hankcs.hanlp.classification.corpus.Document;
 import com.hankcs.hanlp.classification.corpus.IDataSet;
 import com.hankcs.hanlp.classification.corpus.MemoryDataSet;
-import com.hankcs.hanlp.classification.features.*;
+import com.hankcs.hanlp.classification.features.BaseFeatureData;
+import com.hankcs.hanlp.classification.features.ChiSquareFeatureExtractor;
+import com.hankcs.hanlp.classification.features.DfFeatureData;
 import com.hankcs.hanlp.classification.models.AbstractModel;
 import com.hankcs.hanlp.classification.tokenizers.ITokenizer;
 import com.hankcs.hanlp.classification.utilities.CollectionUtility;
 import com.hankcs.hanlp.classification.utilities.MathUtility;
+import com.hankcs.hanlp.collection.trie.ITrie;
 import com.hankcs.hanlp.collection.trie.bintrie.BinTrie;
 import de.bwaldvogel.liblinear.*;
 import edu.upc.svmtraining.model.SVMModel;
+import edu.upc.svmtraining.util.TfIdfFeatureWeighterUtil;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -22,8 +26,9 @@ import static com.hankcs.hanlp.classification.utilities.Predefine.logger;
 
 
 public class SVMClassifier {
-
     public SVMModel model;
+
+    public final Map<Integer, String> WORD_MAP = new HashMap<>();
 
     public SVMClassifier() {
     }
@@ -42,27 +47,16 @@ public class SVMClassifier {
     public void train(String folderPath, String charsetName) throws IOException {
         IDataSet dataSet = new MemoryDataSet();
         dataSet.load(folderPath, charsetName);//从给定文件夹路径加载文件
-        this.train(dataSet);
-    }
-
-    /**
-     * 对提取的训练集对象进行训练
-     *
-     * @param dataSet 训练集对象
-     */
-    public void train(IDataSet dataSet) {
         // 选择特征
         DfFeatureData featureData = selectFeatures(dataSet);
         // 构造权重计算逻辑
-        IFeatureWeighter weighter = new TfIdfFeatureWeighter(dataSet.size(), featureData.df);
+        TfIdfFeatureWeighterUtil weighter = new TfIdfFeatureWeighterUtil(dataSet.size(), featureData.df);
         // 构造SVM问题
         Problem problem = createLiblinearProblem(dataSet, featureData, weighter);
         // 释放内存
         BinTrie<Integer> wordIdTrie = featureData.wordIdTrie;
-        featureData = null;
         ITokenizer tokenizer = dataSet.getTokenizer();
         String[] catalog = dataSet.getCatalog().toArray();
-        dataSet = null;
         System.gc();
         // 求解SVM问题
         Model svmModel = solveLibLinearProblem(problem);
@@ -117,7 +111,7 @@ public class SVMClassifier {
      * @param weighter        权重计算对象
      * @return 返回svm问题对象
      */
-    public Problem createLiblinearProblem(IDataSet dataSet, BaseFeatureData baseFeatureData, IFeatureWeighter weighter) {
+    public Problem createLiblinearProblem(IDataSet dataSet, BaseFeatureData baseFeatureData, TfIdfFeatureWeighterUtil weighter) {
         Problem problem = new Problem();
         int n = dataSet.size();
         problem.l = n;//训练样本数
@@ -143,7 +137,7 @@ public class SVMClassifier {
      * @param weighter 权重计算对象
      * @return 特征节点数组
      */
-    public FeatureNode[] buildDocumentVector(Document document, IFeatureWeighter weighter) {
+    public FeatureNode[] buildDocumentVector(Document document, TfIdfFeatureWeighterUtil weighter) {
         int termCount = document.tfMap.size();  // 词的个数
         FeatureNode[] x = new FeatureNode[termCount];//构造特征节点
         Iterator<Map.Entry<Integer, int[]>> tfMapIterator = document.tfMap.entrySet().iterator();//对得到的分词进行遍历,得到特征词和对应的词频
@@ -206,7 +200,15 @@ public class SVMClassifier {
           分词，新建document存储输入文字
           初始化时调用代参构造方法将输入文字进行分词操作，将字符串数组String[]分割成字符数组char[]
          */
-        Document document = new Document(model.wordIdTrie, model.tokenizer.segment(text));
+        ITrie<Integer> wordIdTrie = model.wordIdTrie;
+        String[] tokenArray = model.tokenizer.segment(text);
+        /*Document document = new Document(wordIdTrie,tokenArray);*/
+        Document document = new Document(wordIdTrie, tokenArray);
+        //WORD_MAP保存特征的id和特征词的对应关系
+        for (String word : tokenArray) {
+            Integer id = wordIdTrie.get(word.toCharArray());
+            WORD_MAP.put(id, word);
+        }
         AbstractModel model = this.getModel();
         double[] probs = this.categorize(document);
         Map<String, Double> scoreMap = new HashMap<>();

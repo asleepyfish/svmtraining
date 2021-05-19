@@ -5,6 +5,7 @@ import edu.upc.svmtraining.model.SVMModel;
 import junit.framework.TestCase;
 
 import java.io.*;
+import java.util.Map;
 
 import static com.hankcs.hanlp.utility.Predefine.logger;
 
@@ -17,8 +18,11 @@ public class SVMClassifierTest extends TestCase {
 
     public static void main(String[] args) throws IOException {
         SVMClassifier classifier = new SVMClassifier(trainOrLoadModel());
-        String predict = predict(classifier, "货币");
+        String predict = predict(classifier, "电子,货币,电子,发布");
         System.out.println(predict);
+        for (Map.Entry<Integer, String> entry : classifier.WORD_MAP.entrySet()) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
     }
 
     private static String predict(SVMClassifier classifier, String text) {
