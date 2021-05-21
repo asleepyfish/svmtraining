@@ -20,6 +20,7 @@ public class SVMClassifierConsole {
     private static int hit_num = 0;
     //测试分类数
     private static int test_num = 0;
+    private static int sport_predict_num = 0, healthy_predict_num = 0, military_predict_num = 0, education_predict_num = 0, travel_predict_num = 0, car_predict_num = 0, economics_predict_num = 0;
     private static int sport_test_num = 0, healthy_test_num = 0, military_test_num = 0, education_test_num = 0, travel_test_num = 0, car_test_num = 0, economics_test_num = 0;
     private static int sport_hit_num = 0, healthy_hit_num = 0, military_hit_num = 0, education_hit_num = 0, travel_hit_num = 0, car_hit_num = 0, economics_hit_num = 0;
     //模型保存路径
@@ -41,13 +42,13 @@ public class SVMClassifierConsole {
             getCategoryNum(path, category, classifier);
         }
 
-        printTestAccuracy("体育", sport_hit_num, sport_test_num);
-        printTestAccuracy("健康", healthy_hit_num, healthy_test_num);
-        printTestAccuracy("军事", military_hit_num, military_test_num);
-        printTestAccuracy("教育", education_hit_num, education_test_num);
-        printTestAccuracy("旅游", travel_hit_num, travel_test_num);
-        printTestAccuracy("汽车", car_hit_num, car_test_num);
-        printTestAccuracy("财经", economics_hit_num, economics_test_num);
+        printTestAccuracy("体育", sport_hit_num, sport_test_num, sport_predict_num);
+        printTestAccuracy("健康", healthy_hit_num, healthy_test_num, healthy_predict_num);
+        printTestAccuracy("军事", military_hit_num, military_test_num, military_predict_num);
+        printTestAccuracy("教育", education_hit_num, education_test_num, education_predict_num);
+        printTestAccuracy("旅游", travel_hit_num, travel_test_num, travel_predict_num);
+        printTestAccuracy("汽车", car_hit_num, car_test_num, car_predict_num);
+        printTestAccuracy("财经", economics_hit_num, economics_test_num, economics_predict_num);
 
         System.out.println("测试集总数共" + test_num + "个");
         System.out.println("测试集中命中的共检测出" + hit_num + "个");
@@ -72,7 +73,33 @@ public class SVMClassifierConsole {
      */
     private static boolean accuracyOfTest(String path, String category, SVMClassifier classifier) throws IOException {
         String readFile = FileOperationUtil.readFile(path);
-        return predict(classifier, readFile).equals(category);
+        String predict = predict(classifier, readFile);
+        switch (predict) {
+            case "体育":
+                sport_predict_num++;
+                break;
+            case "健康":
+                healthy_predict_num++;
+                break;
+            case "军事":
+                military_predict_num++;
+                break;
+            case "教育":
+                education_predict_num++;
+                break;
+            case "旅游":
+                travel_predict_num++;
+                break;
+            case "汽车":
+                car_predict_num++;
+                break;
+            case "财经":
+                economics_predict_num++;
+                break;
+            default:
+                break;
+        }
+        return predict.equals(category);
     }
 
     /**
@@ -227,10 +254,19 @@ public class SVMClassifierConsole {
      * @param hit_num  命中数
      * @param test_num 测试数
      */
-    public static void printTestAccuracy(String category, int hit_num, int test_num) {
+    public static void printTestAccuracy(String category, int hit_num, int test_num, int predict_num) {
+        double precision = hit_num / (test_num * 1.0);
+        double recall = hit_num / (predict_num * 1.0);
         System.out.println(category + "类测试集共" + test_num + "个");
-        System.out.println(category + "类测试集中命中的共检测出" + hit_num + "个");
-        System.out.println(category + "类测试集准确率" + (hit_num / (test_num * 1.0)) * 100 + "%");
+        System.out.println("实际为" + category + "类文本共" + hit_num + "个");
+        System.out.println("判断为属于" + category + "类文本共" + predict_num + "个");
+        System.out.println(category + "类准确率" + precision * 100 + "%");
+        System.out.print(category + "类召回率");
+        System.out.printf("%.2f", recall * 100);
+        System.out.println("%");
+        System.out.print(category + "类F1值");
+        System.out.printf("%.2f", ((2 * precision * recall) / (precision + recall)) * 100);
+        System.out.println("%");
         System.out.println("=============================");
     }
 }
