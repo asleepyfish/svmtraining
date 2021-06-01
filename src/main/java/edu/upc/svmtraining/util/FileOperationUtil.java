@@ -12,16 +12,19 @@ public class FileOperationUtil {
 
     public static void writeFile(String path, String data) {
         FileWriter fw = null;
+        BufferedWriter bw = null;
         try {
             // true表示不覆盖原来的内容，而是加到文件的后面。若要覆盖原来的内容，直接省略这个参数就好
             fw = new FileWriter(path, false);
-            fw.write(data);
+            bw = new BufferedWriter(fw);
+            bw.write(data);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                fw.flush();
-                fw.close();
+                assert bw != null;
+                bw.flush();
+                bw.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -47,6 +50,7 @@ public class FileOperationUtil {
         File file = new File(path);
 
         File[] files = file.listFiles();
+        assert files != null;
         for (File f : files) {
             if (f.isDirectory()) {
                 traverseFile(f.getAbsolutePath());
@@ -57,38 +61,12 @@ public class FileOperationUtil {
                 map.put(key, value);
             }
         }
-        /*Map<String, String> map = new LinkedHashMap<>();
-        LinkedList<File> list = new LinkedList<>();
-
-        if (file.exists()) {
-            if (null == file.listFiles()) {
-                return null;
-            }
-            list.addAll(Arrays.asList(file.listFiles()));
-            while (!list.isEmpty()) {
-                File[] files = list.removeFirst().listFiles();
-                if (null == files) {
-                    continue;
-                }
-                for (File f : files) {
-                    String s = f.getAbsolutePath();
-                    String[] split = s.split("\\\\");
-                    String category = split[6];
-                    map.put(s, category);
-                }
-            }
-        } else {
-            return null;
-        }
-        return map;*/
     }
 
     public static void main(String[] args) {
         traverseFile("data/搜狗文本分类语料库微型版/测试集");
         Set<Map.Entry<String, String>> set = map.entrySet();
-        Iterator<Map.Entry<String, String>> it = set.iterator();
-        while (it.hasNext()) {
-            Map.Entry<String, String> entry = it.next();
+        for (Map.Entry<String, String> entry : set) {
             System.out.println(entry.getKey() + "=" + entry.getValue());
         }
     }

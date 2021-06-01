@@ -226,7 +226,7 @@ public class SVMClassifier {
      */
     public double[] categorize(Document document) {
         FeatureNode[] x = buildDocumentVector(document, model.featureWeighter);
-        double[] probs = new double[model.svmModel.getNrClass()];//保存7个分类试验结果
+        double[] probs = new double[7];//保存7个分类试验结果
         //进行SVM预测，得到向量归一化后的数组
         Linear.predictProbability(model.svmModel, x, probs);
         //probs为归一化后的数组
