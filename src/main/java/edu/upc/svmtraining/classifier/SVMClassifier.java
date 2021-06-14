@@ -37,6 +37,11 @@ public class SVMClassifier {
         this.model = model;
     }
 
+    public SVMModel getModel() {
+        return model;
+    }
+
+
     /**
      * 提取指定路径指定编码的训练集到数据集对象,然后进行训练
      *
@@ -88,7 +93,7 @@ public class SVMClassifier {
         //从训练数据中删掉无用的特征并重建特征映射表
         String[] wordIdArray = dataSet.getLexicon().getWordIdArray();//得到特征词的标志id字符串数组
         int[] idMap = new int[wordIdArray.length];
-        Arrays.fill(idMap, -1);//
+        Arrays.fill(idMap, -1);
         featureData.wordIdTrie = new BinTrie<>();
         featureData.df = new int[selectedFeatures.size()];//df自由度指的是计算某一统计量时，取值不受限制的变量个数
         int p = -1;
@@ -183,10 +188,6 @@ public class SVMClassifier {
     public String classify(String text) {
         Map<String, Double> scoreMap = this.predict(text);//scoreMap存储分类和对应的权重
         return CollectionUtility.max(scoreMap);//返回value值最大(可能性最大)的分类结果
-    }
-
-    public AbstractModel getModel() {
-        return model;
     }
 
     /**

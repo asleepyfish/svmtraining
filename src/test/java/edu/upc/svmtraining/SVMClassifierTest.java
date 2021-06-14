@@ -18,11 +18,11 @@ public class SVMClassifierTest extends TestCase {
 
     public static void main(String[] args) throws IOException {
         SVMClassifier classifier = new SVMClassifier(trainOrLoadModel());
-        String predict = predict(classifier, "电子,货币,电子,发布");
+/*        String predict = predict(classifier, "电子,货币,电子,发布");
         System.out.println(predict);
         for (Map.Entry<Integer, String> entry : classifier.WORD_MAP.entrySet()) {
             System.out.println(entry.getKey() + "=" + entry.getValue());
-        }
+        }*/
     }
 
     private static String predict(SVMClassifier classifier, String text) {
@@ -42,7 +42,7 @@ public class SVMClassifierTest extends TestCase {
         }
         SVMClassifier classifier = new SVMClassifier();  // 创建分类器
         classifier.train(CORPUS_FOLDER, "UTF-8"); // 训练后的模型支持持久化
-        model = (SVMModel) classifier.getModel();
+        model =classifier.getModel();
         saveObjectTo(model, MODEL_PATH);
         return model;
     }

@@ -42,13 +42,11 @@ public class FileOperationUtil {
             sb.append(line);
         }
         br.close();
-        fr.close();
         return sb.toString();
     }
 
     public static void traverseFile(String path) {
         File file = new File(path);
-
         File[] files = file.listFiles();
         assert files != null;
         for (File f : files) {
@@ -57,7 +55,7 @@ public class FileOperationUtil {
             } else {
                 String key = f.getAbsolutePath();
                 String[] split = key.split("\\\\");
-                String value = split[6];
+                String value = split[7];//需要根据自己路径自行定义
                 map.put(key, value);
             }
         }
@@ -67,7 +65,7 @@ public class FileOperationUtil {
         traverseFile("data/搜狗文本分类语料库微型版/测试集");
         Set<Map.Entry<String, String>> set = map.entrySet();
         for (Map.Entry<String, String> entry : set) {
-            System.out.println(entry.getKey() + "=" + entry.getValue());
+            System.out.println(entry.getKey() + "——>" + entry.getValue());
         }
     }
 }
